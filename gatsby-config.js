@@ -1,11 +1,21 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Angelina Pryanishnikova`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
+    {
+      resolve: "gatsby-source-wordpress",
+      options: {
+        /*
+         * De volledige URL van je Headless WordPress site's GraphQL API.
+         * Voorbeeld : "https://www.example-site.com/graphql"
+         */
+        url: " http://belgian-trappist-beer.local/graphql",
+      },
+    },
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
