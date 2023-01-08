@@ -6,7 +6,8 @@ import {
   navLinks, 
   navLinkItem, 
   navLinkText, 
-  siteTitle 
+  siteTitle,
+  siteFooter 
 } from './layout.module.css'
 
 const Layout = ({ pageTitle, children }) => {
@@ -14,7 +15,17 @@ const Layout = ({ pageTitle, children }) => {
     query {
       site {
         siteMetadata {
-          title
+          title,
+          author
+        }
+      }
+      wpPage(slug: { eq: "contact-us" }) {
+        contactUsFields {
+            address
+            city
+            zipCode
+            facebook
+            instagram
         }
       }
     }
@@ -22,11 +33,9 @@ const Layout = ({ pageTitle, children }) => {
 
   return (
     <div className={container}>
-      <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+      <title>{data.site.siteMetadata.title}</title>
       <nav className={nav}>
-        <header className={siteTitle}>
-          <h1>{data.site.siteMetadata.title}</h1>
-        </header>
+      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
         <ul className={navLinks}>
         <li>
         </li>
@@ -41,16 +50,22 @@ const Layout = ({ pageTitle, children }) => {
             </Link>
           </li>
           <li className={navLinkItem}>
-      <Link className={navLinkText} to="/artists">
-        Artists
-      </Link>
-    </li>
+            <Link className={navLinkText} to="/beers">
+              Beers
+            </Link>
+          </li>
         </ul>
       </nav>
       <main>
-        <h1>{pageTitle}</h1>
-        {children}
+      <main>{children}</main>
       </main>
+      <Footer
+        siteTitle={data.site.siteMetadata.title}
+        companyInfo={data.wpPage.contactUsFields}
+      />
+      {/* <footer className={siteFooter}>
+      <p>&copy; 2023 {data.site.siteMetadata.author} | Langlopende Taak CMS Development voor AP Hogeschool</p>
+      </footer> */}
     </div>
   )
 }

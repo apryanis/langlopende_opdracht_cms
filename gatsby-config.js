@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Angelina Pryanishnikova`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Belgische Bieren`,
+    description: `Top 5 Belgische Trappistenbieren`,
+    author: `Angelina Pryanishnikova`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
